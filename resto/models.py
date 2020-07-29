@@ -5,9 +5,9 @@ class SiteConfiguration(models.Model):
     site_logo = models.CharField(max_length=200)
     site_name = models.CharField(max_length=50)
     site_info = models.TextField(max_length=300)
-    banner_image1 = models.ImageField()
-    banner_image2 = models.ImageField()
-    banner_image3 = models.ImageField()
+    banner_image1 = models.ImageField(upload_to="uploads/")
+    banner_image2 = models.ImageField(upload_to="uploads/")
+    banner_image3 = models.ImageField(upload_to="uploads/")
     # Contact Details
     about = models.CharField(max_length=200)
     about_description = models.TextField()
