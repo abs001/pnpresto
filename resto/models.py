@@ -65,3 +65,7 @@ class Reservation(models.Model):
 
     def __str__(self):
         return self.id
+
+
+class Gallery(models.Model):
+    image_path = models.ImageField(upload_to="gallery/")

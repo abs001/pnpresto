@@ -67,3 +67,17 @@
     </div>
 {% endfor %}
 {% endblock menus %}
+
+{% block gallery %}
+    <div class="tz-gallery">
+        <div class="row">
+            {% for img in gallery %}
+            <div class="col-sm-12 col-md-4 col-lg-4">
+                <a class="lightbox" href="/media/{{ img.image_path }}">
+                    <img class="img-fluid" src="/media/{{ img.image_path }}" alt="Gallery Images">
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock gallery %}
