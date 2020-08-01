@@ -1,5 +1,6 @@
 {% extends "resto/skeleton.html" %}
 {% load static %}
+{% load resto_extra %}
 {% block slides %}
     <ul class="slides-container">
         {% for banner in banners %}
@@ -40,3 +41,29 @@
         </div>
     </div>
 {% endblock about %}
+
+{% block menu_type %}
+    <div class="special-menu text-center">
+        <div class="button-group filter-button-group">
+            <button class="active" data-filter="*">All</button>
+            {% for type in menu_type %}
+                <button data-filter=".{{ type|resto_scrub }}">{{ type }}</button>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock menu_type %}
+
+{% block menus %}
+{% for menu in menus %}
+    <div class="col-lg-4 col-md-6 special-grid {{ menu.menu_type|resto_scrub }} ">
+            <div class="gallery-single fix">
+                <img src="/media/{{ menu.menu_photo }}" class="img-fluid" alt="Image">
+                <div class="why-text">
+                    <h4>{{ menu.menu_name }}</h4>
+                    <p>{{ menu.menu_description }}</p>
+                    <h5>{{ menu.menu_price }}</h5>
+                </div>
+            </div>
+    </div>
+{% endfor %}
+{% endblock menus %}

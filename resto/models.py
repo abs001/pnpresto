@@ -25,9 +25,15 @@ class SiteConfiguration(models.Model):
     instagram = models.CharField(max_length=100)
     linkedin = models.CharField(max_length=100)
 
+    def __str__(self):
+        return "Site Configuration"
+
 
 class MenuType(models.Model):
     type = models.CharField(primary_key=True, max_length=50)
+
+    def __str__(self):
+        return self.type
 
 
 class Menu(models.Model):
@@ -35,7 +41,10 @@ class Menu(models.Model):
     menu_type = models.ForeignKey(MenuType, on_delete=models.CASCADE)
     menu_price = models.FloatField()
     menu_description = models.TextField()
-    menu_photo = models.ImageField()
+    menu_photo = models.ImageField(upload_to="uploads/")
+
+    def __str__(self):
+        return self.menu_name
 
 
 class Contact(models.Model):
@@ -53,3 +62,6 @@ class Reservation(models.Model):
     name = models.CharField(max_length=100)
     mobile_no = models.CharField(max_length=100)
     email_id = models.EmailField()
+
+    def __str__(self):
+        return self.id

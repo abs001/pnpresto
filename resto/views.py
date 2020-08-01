@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from .models import SiteConfiguration
+from .models import SiteConfiguration, MenuType, Menu
 
 
 def index(request):
@@ -16,6 +16,8 @@ def index(request):
         "about_details": {
             "about": site_configuration.about,
             "about_description": site_configuration.about_description
-        }
+        },
+        "menu_type": MenuType.objects.all(),
+        "menus": Menu.objects.all()
     })
     return render(request, "resto/home.html", context)
