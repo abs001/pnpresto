@@ -2,7 +2,7 @@ from django.db import models
 
 
 class SiteConfiguration(models.Model):
-    site_logo = models.CharField(max_length=200)
+    site_logo = models.ImageField(upload_to="uploads/")
     site_name = models.CharField(max_length=50)
     site_info = models.TextField(max_length=300)
     banner_image1 = models.ImageField(upload_to="uploads/")
@@ -69,3 +69,9 @@ class Reservation(models.Model):
 
 class Gallery(models.Model):
     image_path = models.ImageField(upload_to="gallery/")
+
+
+class CustomerReview(models.Model):
+    customer_profile = models.ImageField(upload_to="uploads/")
+    customer_name = models.CharField(max_length=30)
+    customer_review = models.TextField(max_length=300)

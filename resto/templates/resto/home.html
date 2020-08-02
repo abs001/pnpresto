@@ -28,7 +28,7 @@
 {% block about %}
    <div class="row">
         <div class="col-lg-6 col-md-6 col-sm-12">
-            <img src="{% static 'resto/images/about-img.jpg'%}" alt="" class="img-fluid">
+            <img src="/media/{{ site_details.site_logo }}" alt="" class="img-fluid">
         </div>
         <div class="col-lg-6 col-md-6 col-sm-12 text-center">
             <div class="inner-column">
@@ -81,3 +81,74 @@
         </div>
     </div>
 {% endblock gallery %}
+
+{% block customer_reviews %}
+     <div class="carousel-inner mt-4">
+         {% for cust in customer_review %}
+             <div class="carousel-item text-center {% if forloop.counter == 1 %} active {% endif %}">
+                <div class="img-box p-1 border rounded-circle m-auto">
+                    <img class="d-block w-100 rounded-circle" src="/media/{{ cust.customer_profile }}" alt="">
+                </div>
+                <h5 class="mt-4 mb-0"><strong class="text-warning text-uppercase">{{ cust.customer_name }}</strong></h5>
+                <p class="m-0 pt-3">{{ cust.customer_review }}</p>
+            </div>
+         {% endfor %}
+     </div>
+{% endblock customer_reviews %}
+
+{% block contact_info %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <i class="fa fa-volume-control-phone"></i>
+                <div class="overflow-hidden">
+                    <h4>Phone</h4>
+                    <p class="lead">
+                       {{ phone }}
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <i class="fa fa-envelope"></i>
+                <div class="overflow-hidden">
+                    <h4>Email</h4>
+                    <p class="lead">
+                        {{ email }}
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <i class="fa fa-map-marker"></i>
+                <div class="overflow-hidden">
+                    <h4>Location</h4>
+                    <p class="lead">
+                        {{ city }}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock contact_info %}
+
+{% block about_details %}
+    <div class="row">
+        <div class="col-lg-4 col-md-4">
+            <h3>About Us</h3>
+            <p>{{ about_details.about_description }}</p>
+        </div>
+        <div class="col-lg-4 col-md-4">
+            <h3>Contact information</h3>
+            <p class="lead">{{ city }}</p>
+            <p class="lead"><a href="#">{{ phone }}</a></p>
+            <p><a href="#"> {{ email }} </a></p>
+        </div>
+        <div class="col-lg-4 col-md-4">
+            <ul class="list-inline f-social">
+                <li class="list-inline-item"><a href="{{ social.facebook }}"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                <li class="list-inline-item"><a href="{{ social.twitter }}"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                <li class="list-inline-item"><a href="{{ social.linkdin }}"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+                <li class="list-inline-item"><a href="{{ social.instagram }}"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+            </ul>
+        </div>
+    </div>
+{% endblock about_details %}
