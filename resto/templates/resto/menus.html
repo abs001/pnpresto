@@ -1,0 +1,44 @@
+{% extends "resto/skeleton.html" %}
+{% load static %}
+{% load resto_extra %}
+
+{% block menus %}
+	<div class="menu-box">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="heading-title text-center">
+						<h2>Special Menu</h2>
+						<p>Below are our interesting menu items</p>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-12">
+                    <div class="special-menu text-center">
+                        <div class="button-group filter-button-group">
+                            <button class="active" data-filter="*">All</button>
+                            {% for type in menu_type %}
+                                <button data-filter=".{{ type|resto_scrub }}">{{ type }}</button>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+			</div>
+            <div class="row special-list">
+                {% for menu in menus %}
+                <div class="col-lg-4 col-md-6 special-grid {{ menu.menu_type|resto_scrub }} ">
+                    <div class="gallery-single fix">
+                        <img src="/media/{{ menu.menu_photo }}" class="img-fluid" alt="Image">
+                        <div class="why-text">
+                            <h4>{{ menu.menu_name }}</h4>
+                            <h5>{{ menu.menu_price }}</h5>
+                            <p>{{ menu.menu_description }}</p>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+			</div>
+		</div>
+	</div>
+{% endblock menus %}
